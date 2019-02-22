@@ -6,27 +6,52 @@ let gameOver = false;
 let playerCanAnswer = false;
 let simonSays = true;
 let answer = '';
+let start = true;
+let classicMode = false;
+let expertMode = false;
 
 function gameLoop() {
-    if (simonSays === true) {
-        generateAnswer();
-        simonSays = false;
-        playerCanAnswer = true;
-    }
+    if (start === false) {
+        document.getElementById('display').innerText = '';
+        if (simonSays === true) {
+            
+            if (classicMode) {
+                generateAnswer();
+                playAll();
+                simonSays = false;
+                playerCanAnswer = true;
+                
+            }
+            if (expertMode) {
+                
+                generateExpert();
+                playAll();
+                simonSays = false;
+                playerCanAnswer = true;
+               
+            }
+        }
+       
 
-    if (playerAnswers.length === simonAnswers.length) {
-        checkAnswers();
-        simonSays = true;
-        playerCanAnswer = false;
-        clearPlayerAnswers();
-    }
-    
-    if (gameOver === true) {
-        document.write('gameover');
+        if (playerAnswers.length === simonAnswers.length) {
+            checkAnswers();
+            simonSays = true;
+            playerCanAnswer = false;
+            clearPlayerAnswers();
+            if (expertMode) {
+                clearSimonAnswers();
+            }
+        }
+
+        if (gameOver === true) {
+            document.write('gameover');
+        } else {
+            document.getElementById('score').innerText = "Score: " + score;
+        }
     } else {
-        document.getElementById('score').innerText = "Score: " + score;
-        window.requestAnimationFrame(gameLoop);
+        document.getElementById('display').innerText = 'Choose a Mode to Start!'
     }
+    window.requestAnimationFrame(gameLoop);
 }
 
 gameLoop();

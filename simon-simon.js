@@ -2,7 +2,12 @@ function generateAnswer() {
     answer = Math.floor(Math.random() * 4);
     simonAnswers.push(possibleAnswers[answer]);
     console.log('Simon says: ', possibleAnswers[answer]);
-    playAll();
+}
+
+function generateExpert() {
+    for (i = 0; i <= score; i++) {
+        generateAnswer();
+    }
 }
 
 function playAll() {
@@ -32,7 +37,7 @@ function playAll() {
         } else {
             clearInterval(playInterval);
         }
-    }, 600);    
+    }, 700);    
 }
 
 
@@ -57,3 +62,6 @@ function checkAnswers() {
     console.log('Score: ' + score);
 }
 
+function clearSimonAnswers() {
+    simonAnswers = [];
+}

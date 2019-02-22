@@ -13,6 +13,22 @@ const redSound = document.getElementById('redSound');
 const yellowSound = document.getElementById('yellowSound');
 const blueSound = document.getElementById('blueSound');
 
-const backgrounds = [greenBG, redBG, yellowBG, blueBG];
+const classic = document.getElementById('classic');
+classic.innerText = 'Classic';
 
+classic.addEventListener('click', function () {
+    if (start === true) {
+        classicMode = true;
+        start = false;
+    }
+});
 
+const expert = document.getElementById('expert');
+expert.innerText = 'Expert';
+
+expert.addEventListener('click', function () {
+    if (start === true) {
+        expertMode = true;
+        start = false;
+    }
+});
